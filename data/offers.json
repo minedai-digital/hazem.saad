@@ -6,7 +6,7 @@
     "discount": "20%",
     "category": "vitamins",
     "validUntil": "2024-03-31",
-    "image": "images/offer-1.jpg",
+    "image": "images/offer.png",
     "status": "active",
     "featured": true
   },
@@ -17,7 +17,7 @@
     "discount": "free-delivery",
     "category": "all",
     "validUntil": "2024-04-30",
-    "image": "images/offer-2.jpg",
+    "image": "images/offer-delivery.svg",
     "status": "active",
     "featured": false
   },
@@ -28,7 +28,7 @@
     "discount": "buy-2-get-1",
     "category": "beauty",
     "validUntil": "2024-03-25",
-    "image": "images/offer-3.jpg",
+    "image": "images/offer-beauty.svg",
     "status": "active",
     "featured": false
   }

@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initPhotoZoom();
     initArticles();
+    initOffers();
+    initWhatsAppIntegration();
 });
 
 // Loading Screen
@@ -768,6 +770,240 @@ function loadArticlesFromDatabase() {
             }
         });
 }
+
+// Offers Management
+function initOffers() {
+    loadOffersFromDatabase();
+}
+
+function loadOffersFromDatabase() {
+    // Load offers from JSON or localStorage
+    fetch('data/offers.json')
+        .then(response => response.json())
+        .then(offers => {
+            updateOffersOnPage(offers);
+        })
+        .catch(error => {
+            console.log('Loading offers from localStorage fallback');
+            // Fallback to localStorage
+            const storedOffers = localStorage.getItem('pharmacy_db_offers');
+            if (storedOffers) {
+                const offers = JSON.parse(storedOffers);
+                updateOffersOnPage(offers);
+            }
+        });
+}
+
+function updateOffersOnPage(offers) {
+    // Update main offer slide with featured offer
+    const featuredOffer = offers.find(offer => offer.featured && offer.status === 'active');
+    if (featuredOffer) {
+        updateMainOfferSlide(featuredOffer);
+    }
+    
+    // Update monthly offers cards
+    const activeOffers = offers.filter(offer => offer.status === 'active' && !offer.featured);
+    updateMonthlyOffers(activeOffers);
+}
+
+function updateMainOfferSlide(offer) {
+    const offerSlide = document.querySelector('.offer-slide');
+    if (offerSlide && offer) {
+        const offerContent = offerSlide.querySelector('.offer-content');
+        const offerImage = offerSlide.querySelector('.offer-image img');
+        
+        if (offerContent) {
+            const title = offerContent.querySelector('h3');
+            const description = offerContent.querySelector('p');
+            
+            if (title) title.textContent = offer.title;
+            if (description) description.textContent = offer.description;
+        }
+        
+        if (offerImage && offer.image) {
+            offerImage.src = offer.image;
+            offerImage.alt = offer.title;
+            // Add error handling for missing images
+            offerImage.onerror = function() {
+                this.src = createOfferFallbackImage(offer);
+            };
+        }
+    }
+}
+
+function updateMonthlyOffers(offers) {
+    const monthlyOffersContainer = document.querySelector('.monthly-offers');
+    if (!monthlyOffersContainer) return;
+    
+    // Clear existing hardcoded offers except the first one (consultation)
+    const existingCards = monthlyOffersContainer.querySelectorAll('.offer-card');
+    // Keep the first card (consultation) and remove others
+    for (let i = 1; i < existingCards.length; i++) {
+        existingCards[i].remove();
+    }
+    
+    // Add dynamic offers
+    offers.forEach((offer, index) => {
+        const offerCard = createOfferCard(offer, index + 1);
+        monthlyOffersContainer.appendChild(offerCard);
+    });
+}
+
+function createOfferCard(offer, delay) {
+    const card = document.createElement('div');
+    card.className = 'offer-card';
+    card.setAttribute('data-aos', 'zoom-in');
+    card.setAttribute('data-aos-delay', delay * 100);
+    
+    const icon = getOfferIcon(offer.category);
+    const validityText = getOfferValidityText(offer.validUntil);
+    
+    card.innerHTML = `
+        <div class="offer-icon">
+            <i class="${icon}"></i>
+        </div>
+        <h4>${offer.title}</h4>
+        <p>${offer.description}</p>
+        <span class="offer-validity">${validityText}</span>
+    `;
+    
+    return card;
+}
+
+function getOfferIcon(category) {
+    const icons = {
+        'vitamins': 'fas fa-prescription-bottle',
+        'all': 'fas fa-shipping-fast',
+        'beauty': 'fas fa-gift',
+        'medicines': 'fas fa-pills',
+        'default': 'fas fa-tags'
+    };
+    return icons[category] || icons.default;
+}
+
+function getOfferValidityText(validUntil) {
+    if (!validUntil) return 'عرض محدود';
+    
+    const endDate = new Date(validUntil);
+    const now = new Date();
+    const diffTime = endDate - now;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 0) return 'انتهى العرض';
+    if (diffDays === 0) return 'ينتهي اليوم';
+    if (diffDays === 1) return 'ينتهي غداً';
+    if (diffDays <= 7) return `ينتهي خلال ${diffDays} أيام`;
+    
+    return 'عرض محدود';
+}
+
+function createOfferFallbackImage(offer) {
+    const color = getOfferColor(offer.category);
+    const icon = getOfferIconSymbol(offer.category);
+    
+    const svg = `
+        <svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="offerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:${color};stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:${color};stop-opacity:0.6" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#offerGradient)" rx="15"/>
+            <text x="50%" y="40%" text-anchor="middle" fill="white" font-size="60" font-family="Arial">${icon}</text>
+            <text x="50%" y="65%" text-anchor="middle" fill="white" font-size="18" font-family="Cairo, Arial" font-weight="bold">${offer.title.substring(0, 25)}${offer.title.length > 25 ? '...' : ''}</text>
+            <text x="50%" y="80%" text-anchor="middle" fill="white" font-size="14" font-family="Cairo, Arial">${offer.discount}</text>
+        </svg>
+    `;
+    
+    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+}
+
+function getOfferColor(category) {
+    const colors = {
+        'vitamins': '#14a085',
+        'all': '#2ecc71',
+        'beauty': '#e91e63',
+        'medicines': '#3498db',
+        'default': '#0d7377'
+    };
+    return colors[category] || colors.default;
+}
+
+function getOfferIconSymbol(category) {
+    const icons = {
+        'vitamins': '💊',
+        'all': '🚚',
+        'beauty': '💄',
+        'medicines': '⚕️',
+        'default': '🏷️'
+    };
+    return icons[category] || icons.default;
+}
+
+// WhatsApp Integration
+function initWhatsAppIntegration() {
+    // Add click event listeners to all WhatsApp links
+    const whatsappLinks = document.querySelectorAll('.social-link.whatsapp');
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openWhatsApp();
+        });
+    });
+    
+    // Add floating WhatsApp button
+    createFloatingWhatsAppButton();
+}
+
+function openWhatsApp(message = '') {
+    const phoneNumber = '201287571975'; // Egypt country code + number
+    let defaultMessage = 'مرحباً بك! أريد استشارة صيدلانية من صيدلية الدكتور حازم سعد.';
+    
+    if (message) {
+        defaultMessage = message;
+    }
+    
+    const encodedMessage = encodeURIComponent(defaultMessage);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Track WhatsApp usage (optional analytics)
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'whatsapp_click', {
+            'event_category': 'engagement',
+            'event_label': 'whatsapp_contact'
+        });
+    }
+}
+
+function createFloatingWhatsAppButton() {
+    // Create floating WhatsApp button
+    const floatingBtn = document.createElement('div');
+    floatingBtn.className = 'floating-whatsapp';
+    floatingBtn.innerHTML = `
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-tooltip">تواصل عبر واتساب</div>
+    `;
+    
+    floatingBtn.addEventListener('click', () => {
+        openWhatsApp();
+    });
+    
+    document.body.appendChild(floatingBtn);
+    
+    // Add smooth entrance animation
+    setTimeout(() => {
+        floatingBtn.classList.add('active');
+    }, 2000);
+}
+
+// Global function to be accessible from HTML onclick
+window.openWhatsApp = openWhatsApp;
 
 function updateArticlesOnPage(articles) {
     // Update news cards with real data and add event listeners

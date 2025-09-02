@@ -56,35 +56,62 @@ body {
     color: var(--white);
 }
 
-.pharmacy-cross {
-    width: 60px;
-    height: 60px;
-    position: relative;
+.pharmacist-name {
+    text-align: center;
     margin: 0 auto 20px;
-    animation: pulse 2s infinite;
 }
 
-.cross-horizontal,
-.cross-vertical {
+.pharmacist-name h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: fadeInScale 2s ease-in-out infinite alternate;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading-dots span {
+    width: 12px;
+    height: 12px;
     background: var(--white);
-    position: absolute;
-    border-radius: 3px;
+    border-radius: 50%;
+    animation: loadingDots 1.5s ease-in-out infinite;
 }
 
-.cross-horizontal {
-    width: 60px;
-    height: 15px;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.cross-vertical {
-    width: 15px;
-    height: 60px;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loadingDots {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }
 
 @keyframes pulse {
@@ -132,13 +159,22 @@ body {
 .logo-icon {
     width: 40px;
     height: 40px;
-    background: var(--gradient-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
-    font-size: 18px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.logo-icon svg {
+    transition: var(--transition);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.nav-logo:hover .logo-icon svg {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
 
 .logo-text {
@@ -285,6 +321,20 @@ body {
 .btn-secondary:hover {
     background: var(--primary-color);
     color: var(--white);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: var(--white);
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
 .section-header {
@@ -694,10 +744,31 @@ body {
     align-items: center;
     gap: 8px;
     transition: var(--transition);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
 }
 
 .service-link:hover {
     gap: 12px;
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.whatsapp-consultation-btn {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.whatsapp-consultation-btn:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
 }
 
 /* Products Section */
@@ -1137,6 +1208,16 @@ body {
     color: var(--white);
     font-size: 20px;
     flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.contact-icon.whatsapp-icon {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.contact-icon.whatsapp-icon:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+    transform: scale(1.1);
 }
 
 .contact-details h4 {
@@ -1181,6 +1262,14 @@ body {
 .social-link:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-light);
+}
+
+.social-link.whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.social-link.whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
 }
 
 .contact-form-container {
@@ -1589,6 +1678,105 @@ body {
 
     .container {
         padding: 0 10px;
+    }
+}
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: whatsappPulse 2s infinite;
+}
+
+.floating-whatsapp.active {
+    transform: scale(1);
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+.floating-whatsapp .whatsapp-icon {
+    font-size: 28px;
+    color: white;
+}
+
+.floating-whatsapp .whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+    font-family: 'Cairo', sans-serif;
+}
+
+.floating-whatsapp:hover .whatsapp-tooltip {
+    opacity: 1;
+}
+
+.floating-whatsapp .whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes whatsappPulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* WhatsApp Contact Item Hover Effect */
+.contact-item:hover {
+    transform: translateY(-3px);
+    transition: var(--transition);
+}
+
+.contact-item:hover .whatsapp-icon {
+    animation: whatsappBounce 0.6s ease-in-out;
+}
+
+@keyframes whatsappBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
     }
 }
 

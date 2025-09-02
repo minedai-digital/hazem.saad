@@ -1,0 +1,65 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="beautyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e91e63;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#ad1457;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#880e4f;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f8bbd9;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#e1bee7;stop-opacity:1" />
+        </linearGradient>
+        <radialGradient id="sparkle" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+        </radialGradient>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#beautyGradient)" rx="15"/>
+    
+    <!-- Decorative sparkles -->
+    <circle cx="80" cy="60" r="3" fill="url(#sparkle)"/>
+    <circle cx="320" cy="80" r="4" fill="url(#sparkle)"/>
+    <circle cx="60" cy="200" r="2" fill="url(#sparkle)"/>
+    <circle cx="340" cy="220" r="3" fill="url(#sparkle)"/>
+    
+    <!-- Beauty products -->
+    <g transform="translate(80, 100)">
+        <!-- Lipstick -->
+        <rect x="0" y="0" width="20" height="60" fill="url(#bottleGradient)" rx="10"/>
+        <rect x="5" y="-10" width="10" height="15" fill="#c2185b" rx="5"/>
+        
+        <!-- Perfume bottle -->
+        <rect x="40" y="10" width="30" height="50" fill="url(#bottleGradient)" rx="5"/>
+        <rect x="50" y="0" width="10" height="15" fill="#ad1457" rx="2"/>
+        <circle cx="55" cy="5" r="3" fill="#f8bbd9"/>
+        
+        <!-- Cream jar -->
+        <circle cx="120" cy="40" r="25" fill="url(#bottleGradient)"/>
+        <circle cx="120" cy="35" r="20" fill="#f8bbd9"/>
+        <rect x="110" y="25" width="20" height="8" fill="#ad1457" rx="4"/>
+        
+        <!-- Makeup brush -->
+        <rect x="180" y="5" width="6" height="50" fill="#8d6e63" rx="3"/>
+        <ellipse cx="183" cy="0" rx="8" ry="5" fill="#ffb74d"/>
+    </g>
+    
+    <!-- Offer text -->
+    <text x="200" y="50" text-anchor="middle" fill="white" font-size="20" font-family="Cairo, Arial" font-weight="bold">اشتري 2</text>
+    <text x="200" y="75" text-anchor="middle" fill="white" font-size="16" font-family="Cairo, Arial">واحصل على</text>
+    
+    <!-- "1 Free" badge -->
+    <g transform="translate(200, 210)">
+        <circle cx="0" cy="0" r="40" fill="#4caf50"/>
+        <text x="0" y="-8" text-anchor="middle" fill="white" font-size="18" font-family="Cairo, Arial" font-weight="bold">1</text>
+        <text x="0" y="8" text-anchor="middle" fill="white" font-size="12" font-family="Cairo, Arial">مجاناً</text>
+        <text x="0" y="22" text-anchor="middle" fill="white" font-size="10" font-family="Cairo, Arial">FREE</text>
+    </g>
+    
+    <!-- Decorative hearts -->
+    <g fill="rgba(255,255,255,0.3)">
+        <path d="M 350 40 C 345 35, 335 35, 330 40 C 325 35, 315 35, 310 40 C 315 50, 330 60, 330 60 C 330 60, 345 50, 350 40 Z"/>
+        <path d="M 50 250 C 47 247, 42 247, 39 250 C 36 247, 31 247, 28 250 C 31 257, 39 265, 39 265 C 39 265, 47 257, 50 250 Z"/>
+    </g>
+</svg>
