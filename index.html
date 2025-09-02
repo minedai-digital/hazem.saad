@@ -69,6 +69,10 @@
             
             <!-- Admin Login Icon -->
             <div class="nav-admin">
+                <a href="tel:+201287571975" class="contact-nav-btn" title="اتصل بنا" onclick="handlePhoneCall(event)">
+                    <i class="fas fa-phone"></i>
+                    <span>اتصل بنا</span>
+                </a>
                 <a href="admin.html" class="admin-link" title="تسجيل دخول الإدارة">
                     <i class="fas fa-user-shield"></i>
                 </a>
@@ -147,7 +151,7 @@
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2 class="section-title">عن حازم سعد</h2>
-                    <p class="section-subtitle">مكرس لصحتكم وعافيتكم</p>
+                    <p class="section-subtitle">صحكتم اولا  </p>
                 </div>
                 
                 <div class="about-content">
@@ -469,7 +473,7 @@
                             </div>
                         </div>
                         
-                        <div class="contact-item">
+                        <div class="contact-item" onclick="window.location.href='tel:+201287571975'" style="cursor: pointer;">
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
@@ -600,6 +604,9 @@
                         <a href="#" class="social-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
+                        <a href="https://wa.me/201287571975" class="social-link whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                         <a href="#" class="social-link">
                             <i class="fab fa-instagram"></i>
                         </a>
@@ -609,6 +616,7 @@
                         <a href="#" class="social-link">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
+                    </div>
                     </div>
                 </div>
                 
@@ -645,6 +653,10 @@
                         <li>
                             <i class="fas fa-phone"></i>
                             +20 1287571975
+                        </li>
+                        <li onclick="openWhatsApp()" style="cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.color='#25d366'" onmouseout="this.style.color='rgba(255, 255, 255, 0.7)'">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            واتساب: +20 1287571975
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>

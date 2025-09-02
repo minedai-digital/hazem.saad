@@ -234,11 +234,64 @@ body {
     border-radius: 2px;
 }
 
-/* Admin Login Icon */
+/* Admin Login Icon and Contact Button */
 .nav-admin {
     display: flex;
     align-items: center;
+    gap: 15px;
     margin-right: 15px;
+}
+
+.contact-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: 25px;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-nav-btn i {
+    font-size: 16px;
+    animation: pulse 2s infinite;
+}
+
+.contact-nav-btn span {
+    white-space: nowrap;
+}
+
+.contact-nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    background: var(--gradient-secondary);
+    color: var(--white);
+}
+
+.contact-nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.contact-nav-btn:hover::before {
+    width: 120%;
+    height: 120%;
 }
 
 .admin-link {
@@ -1109,6 +1162,54 @@ body {
     opacity: 0.8;
 }
 
+/* Offer Expired Message */
+.offer-expired-message {
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid #e74c3c;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInExpired 0.5s ease-in-out;
+}
+
+.offer-expired-message .expired-icon {
+    width: 50px;
+    height: 50px;
+    background: #e74c3c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-size: 20px;
+}
+
+.offer-expired-message p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #e74c3c;
+    margin: 0 0 10px 0;
+}
+
+.offer-expired-message small {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    display: block;
+}
+
+@keyframes fadeInExpired {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .offer-image {
     text-align: center;
 }
@@ -1195,6 +1296,24 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 20px;
+    transition: var(--transition);
+}
+
+.contact-item[onclick] {
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin: -15px;
+}
+
+.contact-item[onclick]:hover {
+    background: rgba(13, 115, 119, 0.1);
+    transform: translateY(-2px);
+}
+
+.contact-item[onclick]:hover .contact-icon {
+    transform: scale(1.1);
+    background: var(--gradient-secondary);
 }
 
 .contact-icon {
@@ -1386,6 +1505,16 @@ body {
     background: var(--primary-color);
 }
 
+.footer-social .social-link.whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.footer-social .social-link.whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
 .footer-section h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
@@ -1508,6 +1637,21 @@ body {
 
     .nav-admin {
         margin-right: 10px;
+        gap: 10px;
+    }
+
+    .contact-nav-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+
+    .contact-nav-btn i {
+        font-size: 14px;
+    }
+
+    .contact-nav-btn span {
+        display: none;
     }
 
     .admin-link {
@@ -1636,6 +1780,26 @@ body {
 @media (max-width: 480px) {
     .nav-container {
         padding: 0 10px;
+    }
+
+    .nav-admin {
+        gap: 8px;
+    }
+
+    .contact-nav-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+        border-radius: 18px;
+    }
+
+    .contact-nav-btn i {
+        font-size: 12px;
+    }
+
+    .admin-link {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
     }
 
     .hero-title {
@@ -1777,6 +1941,155 @@ body {
     }
     60% {
         transform: translateY(-5px);
+    }
+}
+
+/* Sticky Contact Button */
+.sticky-contact-btn {
+    position: fixed;
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
+    z-index: 999;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticky-contact-btn.active {
+    right: 0;
+}
+
+.sticky-contact-btn.visible {
+    right: 0;
+}
+
+.contact-btn-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px 0 0 50px;
+    box-shadow: -5px 5px 20px rgba(13, 115, 119, 0.3);
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: 1.1rem;
+    gap: 10px;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.contact-btn-link:hover {
+    background: var(--gradient-secondary);
+    transform: translateX(-10px);
+    box-shadow: -8px 8px 25px rgba(13, 115, 119, 0.4);
+}
+
+.contact-btn-link i {
+    font-size: 18px;
+    animation: phoneRing 2s infinite;
+}
+
+.contact-btn-text {
+    font-family: 'Cairo', sans-serif;
+    white-space: nowrap;
+}
+
+@keyframes phoneRing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: rotate(-10deg);
+    }
+    20%, 40%, 60%, 80% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Phone Call Notification */
+.phone-call-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    z-index: 10000;
+    background: linear-gradient(135deg, #0d7377 0%, #14a085 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px rgba(13, 115, 119, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.phone-call-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.notification-content i {
+    font-size: 16px;
+    animation: phoneRing 1s ease-in-out infinite;
+}
+
+.notification-content span {
+    white-space: nowrap;
+}
+
+/* Mobile responsive for notification */
+@media (max-width: 768px) {
+    .phone-call-notification {
+        left: 20px;
+        right: 20px;
+        transform: translateY(-100px);
+        width: auto;
+    }
+    
+    .phone-call-notification.show {
+        transform: translateY(0);
+    }
+    
+    .notification-content span {
+        white-space: normal;
+        font-size: 14px;
+    }
+}
+
+/* Responsive adjustments for sticky button */
+@media (max-width: 768px) {
+    .sticky-contact-btn {
+        right: -150px;
+    }
+    
+    .contact-btn-link {
+        padding: 12px 20px;
+        font-size: 1rem;
+        min-width: 140px;
+    }
+    
+    .contact-btn-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sticky-contact-btn {
+        right: -120px;
+    }
+    
+    .contact-btn-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: 120px;
     }
 }
 

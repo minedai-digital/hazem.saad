@@ -1,4 +1,43 @@
 // DOM Content Loaded
+// Offer Configuration - Change this date to set when the offer expires
+const OFFER_CONFIG = {
+    // Set your desired offer end date here (Year, Month-1, Day, Hour, Minute, Second)
+    // Note: Month is 0-indexed (0 = January, 1 = February, etc.)
+    endDate: new Date(2025, 9, 15, 23, 59, 59), // March 31, 2024 at 23:59:59
+    
+    // Alternative: You can also set it as a string
+    // endDateString: '2024-03-31T23:59:59'
+    
+    // Test mode - Set to true to test expired offer (expires in 2 minutes)
+    testMode: false  // Set to true to test expired offer, false for production
+};
+
+// Get the actual end date (for testing or production)
+function getOfferEndDate() {
+    if (OFFER_CONFIG.testMode) {
+        // For testing: set expiration to 2 minutes from now
+        const testDate = new Date();
+        testDate.setMinutes(testDate.getMinutes() + 2);
+        return testDate;
+    }
+    return OFFER_CONFIG.endDate;
+}
+
+// Helper function to format Arabic date
+function formatOfferEndDate(date) {
+    const arabicMonths = [
+        'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+        'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+    ];
+    
+    const day = date.getDate();
+    const month = arabicMonths[date.getMonth()];
+    const year = date.getFullYear();
+    
+    return `${day} ${month} ${year}`;
+}
+
+// DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initLoader();
@@ -14,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initArticles();
     initOffers();
     initWhatsAppIntegration();
+    initStickyContactButton();
 });
 
 // Loading Screen
@@ -595,6 +635,20 @@ function showNotification(message, type = 'info') {
 }
 
 // Offer Timer
+// ============================================================================
+// This function manages the countdown timer for special offers
+// 
+// TO SET A SPECIFIC OFFER END DATE:
+// 1. Go to OFFER_CONFIG at the top of this file
+// 2. Change the endDate to your desired date
+// 3. Example: new Date(2024, 2, 31, 23, 59, 59) = March 31, 2024 at 23:59:59
+// 4. Remember: Month is 0-indexed (0=Jan, 1=Feb, 2=Mar, etc.)
+//
+// TO TEST THE EXPIRED STATE:
+// 1. Set testMode: true in OFFER_CONFIG
+// 2. The offer will expire in 2 minutes for testing
+// 3. Don't forget to set testMode: false for production
+// ============================================================================
 function initOfferTimer() {
     const timerElements = {
         days: document.getElementById('days'),
@@ -602,18 +656,46 @@ function initOfferTimer() {
         minutes: document.getElementById('minutes')
     };
     
+    // Update offer description with end date
+    updateOfferDescription();
+    
     if (timerElements.days && timerElements.hours && timerElements.minutes) {
         updateTimer();
-        setInterval(updateTimer, 60000); // Update every minute
+        setInterval(updateTimer, 30000); // Update every 30 seconds for better responsiveness
+    }
+    
+    function updateOfferDescription() {
+        const offerDescription = document.querySelector('.offer-slide p');
+        if (offerDescription) {
+            const endDateText = formatOfferEndDate(getOfferEndDate());
+            // Update the existing description to include the actual end date
+            const currentText = offerDescription.textContent;
+            if (!currentText.includes(endDateText)) {
+                // Replace generic date with specific date
+                const updatedText = currentText.replace(
+                    /حتى \d+.*/,
+                    `حتى ${endDateText}.`
+                );
+                offerDescription.textContent = updatedText;
+            }
+        }
     }
     
     function updateTimer() {
-        // Set offer end date (30 days from now for demo)
-        const endDate = new Date();
-        endDate.setDate(endDate.getDate() + 30);
+        // Use configured offer end date
+        const endDate = getOfferEndDate();
         
         const now = new Date();
         const timeLeft = endDate - now;
+        
+        console.log(`Offer timer: ${Math.floor(timeLeft / (1000 * 60 * 60 * 24))}d ${Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}h ${Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))}m left until ${endDate}`);
+        
+        // Check if offer has expired
+        if (timeLeft <= 0) {
+            console.log('Offer has expired, showing expired state');
+            handleExpiredOffer();
+            return;
+        }
         
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -622,6 +704,88 @@ function initOfferTimer() {
         timerElements.days.textContent = days.toString().padStart(2, '0');
         timerElements.hours.textContent = hours.toString().padStart(2, '0');
         timerElements.minutes.textContent = minutes.toString().padStart(2, '0');
+        
+        // Show active offer state
+        showActiveOffer();
+    }
+    
+    function handleExpiredOffer() {
+        // Hide timer
+        const offerTimer = document.querySelector('.offer-timer');
+        if (offerTimer) {
+            offerTimer.style.display = 'none';
+        }
+        
+        // Update offer button
+        const offerButton = document.querySelector('.offer-slide .btn-primary');
+        if (offerButton) {
+            offerButton.style.display = 'none';
+        }
+        
+        // Add expired message
+        addExpiredMessage();
+        
+        // Update offer badge
+        const offerBadge = document.querySelector('.offer-badge');
+        if (offerBadge) {
+            offerBadge.textContent = 'العرض منتهي';
+            offerBadge.style.background = '#e74c3c';
+        }
+    }
+    
+    function addExpiredMessage() {
+        // Check if message already exists
+        if (document.querySelector('.offer-expired-message')) {
+            return;
+        }
+        
+        const offerContent = document.querySelector('.offer-slide .offer-content');
+        if (offerContent) {
+            const expiredMessage = document.createElement('div');
+            expiredMessage.className = 'offer-expired-message';
+            expiredMessage.innerHTML = `
+                <div class="expired-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <p>لقد انتهى العرض</p>
+                <small>شكراً لاهتمامكم، ترقبوا عروضنا القادمة</small>
+            `;
+            
+            // Insert before the hidden button
+            const offerButton = offerContent.querySelector('.btn-primary');
+            if (offerButton) {
+                offerContent.insertBefore(expiredMessage, offerButton);
+            } else {
+                offerContent.appendChild(expiredMessage);
+            }
+        }
+    }
+    
+    function showActiveOffer() {
+        // Ensure timer is visible
+        const offerTimer = document.querySelector('.offer-timer');
+        if (offerTimer) {
+            offerTimer.style.display = 'flex';
+        }
+        
+        // Ensure button is visible and active
+        const offerButton = document.querySelector('.offer-slide .btn-primary');
+        if (offerButton) {
+            offerButton.style.display = 'inline-block';
+        }
+        
+        // Remove expired message if it exists
+        const expiredMessage = document.querySelector('.offer-expired-message');
+        if (expiredMessage) {
+            expiredMessage.remove();
+        }
+        
+        // Update offer badge
+        const offerBadge = document.querySelector('.offer-badge');
+        if (offerBadge) {
+            offerBadge.textContent = 'عرض محدود';
+            offerBadge.style.background = '';
+        }
     }
 }
 
@@ -944,7 +1108,7 @@ function getOfferIconSymbol(category) {
 // WhatsApp Integration
 function initWhatsAppIntegration() {
     // Add click event listeners to all WhatsApp links
-    const whatsappLinks = document.querySelectorAll('.social-link.whatsapp');
+    const whatsappLinks = document.querySelectorAll('.social-link.whatsapp, .whatsapp-link');
     whatsappLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -954,6 +1118,9 @@ function initWhatsAppIntegration() {
     
     // Add floating WhatsApp button
     createFloatingWhatsAppButton();
+    
+    // Initialize footer WhatsApp functionality
+    initFooterWhatsApp();
 }
 
 function openWhatsApp(message = '') {
@@ -1002,8 +1169,124 @@ function createFloatingWhatsAppButton() {
     }, 2000);
 }
 
+function initFooterWhatsApp() {
+    // Add hover effects and click functionality to footer WhatsApp elements
+    const footerWhatsAppItems = document.querySelectorAll('[onclick="openWhatsApp()"]');
+    footerWhatsAppItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.background = 'rgba(37, 211, 102, 0.1)';
+            this.style.borderRadius = '5px';
+            this.style.padding = '5px';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.background = 'transparent';
+            this.style.padding = '0';
+        });
+    });
+}
+
 // Global function to be accessible from HTML onclick
 window.openWhatsApp = openWhatsApp;
+
+// Sticky Contact Button
+function initStickyContactButton() {
+    createStickyContactButton();
+    handleStickyButtonVisibility();
+}
+
+function createStickyContactButton() {
+    // Create sticky contact button
+    const stickyBtn = document.createElement('div');
+    stickyBtn.className = 'sticky-contact-btn';
+    stickyBtn.innerHTML = `
+        <a href="tel:+201287571975" class="contact-btn-link" onclick="handlePhoneCall(event)">
+            <i class="fas fa-phone"></i>
+            <span class="contact-btn-text">اتصل بنا</span>
+        </a>
+    `;
+    
+    document.body.appendChild(stickyBtn);
+    
+    // Add smooth entrance animation after page load
+    setTimeout(() => {
+        stickyBtn.classList.add('active');
+    }, 3000);
+}
+
+// Handle phone call with user feedback
+function handlePhoneCall(event) {
+    // Add visual feedback
+    const button = event.currentTarget;
+    const originalText = button.querySelector('.contact-btn-text').textContent;
+    
+    // Show calling feedback
+    button.querySelector('.contact-btn-text').textContent = 'يتم الاتصال...';
+    button.style.transform = 'scale(0.95)';
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+        button.querySelector('.contact-btn-text').textContent = originalText;
+        button.style.transform = '';
+    }, 2000);
+    
+    // Analytics tracking (optional)
+    console.log('Phone call initiated from sticky contact button');
+    
+    // Show notification to user
+    showPhoneCallNotification();
+}
+
+// Show notification when phone call is initiated
+function showPhoneCallNotification() {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'phone-call-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-phone-alt"></i>
+            <span>يتم فتح تطبيق الهاتف...</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+function handleStickyButtonVisibility() {
+    const stickyBtn = document.querySelector('.sticky-contact-btn');
+    const heroSection = document.querySelector('#home');
+    
+    if (!stickyBtn || !heroSection) return;
+    
+    window.addEventListener('scroll', () => {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollPosition = window.scrollY;
+        
+        // Show button after scrolling past hero section
+        if (scrollPosition > heroHeight * 0.7) {
+            stickyBtn.classList.add('visible');
+        } else {
+            stickyBtn.classList.remove('visible');
+        }
+    });
+}
 
 function updateArticlesOnPage(articles) {
     // Update news cards with real data and add event listeners
