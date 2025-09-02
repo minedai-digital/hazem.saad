@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "خصم 20% على جميع الفيتامينات",
+    "description": "عزز مناعتك مع مجموعة الفيتامينات المميزة لدينا. العرض ساري حتى 31 مارس.",
+    "discount": "20%",
+    "category": "vitamins",
+    "validUntil": "2024-03-31",
+    "image": "images/offer-1.jpg",
+    "status": "active",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "توصيل مجاني",
+    "description": "توصيل مجاني على الطلبات أكثر من 50 جنيه",
+    "discount": "free-delivery",
+    "category": "all",
+    "validUntil": "2024-04-30",
+    "image": "images/offer-2.jpg",
+    "status": "active",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "اشتري 2 واحصل على 1 مجاناً",
+    "description": "على منتجات العناية بالبشرة المختارة",
+    "discount": "buy-2-get-1",
+    "category": "beauty",
+    "validUntil": "2024-03-25",
+    "image": "images/offer-3.jpg",
+    "status": "active",
+    "featured": false
+  }
+]

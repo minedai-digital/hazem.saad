@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="صيدلية حازم سعد - شريكك الموثوق في الرعاية الصحية، نقدم الاستشارات الدوائية والأدوية ومستحضرات التجميل والأجهزة الطبية.">
+    <meta name="keywords" content="صيدلية، رعاية صحية، أدوية، استشارة، حازم سعد، أدوية">
+    <title>صيدلية حازم سعد - شريكك الموثوق في الرعاية الصحية</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="pharmacy-cross">
+                <div class="cross-horizontal"></div>
+                <div class="cross-vertical"></div>
+            </div>
+            <p>جاري تحميل صيدلية حازم سعد...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-pharmacy"></i>
+                </div>
+                <span class="logo-text">صيدلية حازم سعد</span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">من نحن</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">خدماتنا</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">المنتجات</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#news" class="nav-link">أخبار صحية</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#offers" class="nav-link">عروض خاصة</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">اتصل بنا</a>
+                </li>
+            </ul>
+            
+            <!-- Admin Login Icon -->
+            <div class="nav-admin">
+                <a href="admin.html" class="admin-link" title="تسجيل دخول الإدارة">
+                    <i class="fas fa-user-shield"></i>
+                </a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="hero-title">
+                            مرحباً بكم في  صيدلية حازم سعد
+                        </h1>
+                        <p class="hero-subtitle">
+                            شريككم الموثوق في الرعاية الصحية، ملتزمون بتقديم خدمات صيدلانية عالية الجودة، 
+                            استشارات خبراء، وحلول عافية من أجل مجتمع أكثر صحة.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary">خدماتنا</a>
+                            <a href="#contact" class="btn btn-secondary">اتصل بنا</a>
+                        </div>
+                    </div>
+                    <div class="hero-features" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>استشارة متخصصة</h3>
+                            <p>نصائح صيدلانية مهنية</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <h3>أدوية عالية الجودة</h3>
+                            <p>أدوية ومكملات أصلية</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>حلول رعاية صحية</h3>
+                            <p>دعم عافية متكامل</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="1000">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <span>اسحب للاستكشاف</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">عن حازم سعد</h2>
+                    <p class="section-subtitle">مكرس لصحتكم وعافيتكم</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-info" data-aos="fade-right">
+                        <div class="pharmacist-image">
+                            <img src="images/hazem.jpg" alt="الصيدلي حازم سعد" class="pharmacist-photo" id="pharmacist-photo">
+                            <div class="image-overlay">
+                                <div class="credentials">
+                                    <span class="credential">دكتور صيدلة</span>
+                                    <span class="credential">صيدلي مرخص</span>
+                                </div>
+                                <div class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    <span>اضغط للتكبير</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-text" data-aos="fade-left">
+                        <h3>تعرف على الصيدلي حازم سعد</h3>
+                        <p>
+                            بخبرة تزيد عن عقد من الزمن في الرعاية الصيدلانية، يكرس حازم سعد جهوده 
+                            لتقديم خدمات رعاية صحية استثنائية لمجتمعنا. التزامه بالتميز 
+                            والرعاية المتمحورة حول المريض جعل صيدليتنا وجهة رعاية صحية موثوقة.
+                        </p>
+                        
+                        <div class="values">
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h4>الثقة</h4>
+                                    <p>بناء علاقات دائمة من خلال الخدمة الصادقة والموثوقة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h4>الجودة</h4>
+                                    <p>ضمان أعلى المعايير في الرعاية الصيدلانية</p>
+                                </div>
+                            </div>
+                            
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <i class="fas fa-heart-pulse"></i>
+                                </div>
+                                <div class="value-content">
+                                    <h4>الرعاية الصحية</h4>
+                                    <p>تعزيز العافية وتحسين جودة الحياة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">خدماتنا</h2>
+                    <p class="section-subtitle">حلول رعاية صحية شاملة</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>استشارات صيدلانية</h3>
+                        <p>نصائح متخصصة حول الأدوية وتفاعلاتها والاستخدام الصحيح لضمان علاج آمن وفعال.</p>
+                        <a href="#contact" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i class="fas fa-prescription-bottle-medical"></i>
+                        </div>
+                        <h3>أدوية بوصفة طبية</h3>
+                        <p>مجموعة كاملة من الأدوية بوصفة طبية من مصنعين موثوقين، يتم صرفها بعناية مهنية.</p>
+                        <a href="#contact" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>مستحضرات تجميل وعناية بشرة</h3>
+                        <p>منتجات تجميل ممتازة وحلول عناية بالبشرة موصى بها من أطباء الجلدية لجميع أنواع البشرة.</p>
+                        <a href="#contact" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>أجهزة طبية</h3>
+                        <p>معدات وأجهزة طبية عالية الجودة للرعاية الصحية المنزلية ومراقبة العلاج ودعمه.</p>
+                        <a href="#contact" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>مكملات غذائية وفيتامينات</h3>
+                        <p>مكملات صحية طبيعية وفيتامينات لدعم رحلة عافيتكم وتلبية احتياجاتكم الغذائية.</p>
+                        <a href="#contact" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>استشارة عبر الإنترنت</h3>
+                        <p>استشارات افتراضية مريحة لمراجعة الأدوية والنصائح الصحية والإرشاد الصيدلاني.</p>
+                        <a href="#contact" class="service-link">اطلب استشارة <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">فهرس المنتجات</h2>
+                    <p class="section-subtitle">تصفح مجموعتنا الواسعة من منتجات الرعاية الصحية</p>
+                </div>
+                
+                <div class="product-filters" data-aos="fade-up" data-aos-delay="200">
+                    <button class="filter-btn active" data-filter="all">جميع المنتجات</button>
+                    <button class="filter-btn" data-filter="medicines">أدوية</button>
+                    <button class="filter-btn" data-filter="vitamins">فيتامينات</button>
+                    <button class="filter-btn" data-filter="supplements">مكملات غذائية</button>
+                    <button class="filter-btn" data-filter="beauty">تجميل وعناية بشرة</button>
+                </div>
+                
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+                
+                <div class="load-more" data-aos="fade-up">
+                    <button class="btn btn-primary" id="load-more-btn">تحميل منتجات أكثر</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="news">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">أخبار ومقالات صحية</h2>
+                    <p class="section-subtitle">ابق على اطلاع بأحدث الاتجاهات الصحية</p>
+                </div>
+                
+                <div class="news-grid">
+                    <article class="news-card featured" data-aos="fade-right">
+                        <div class="news-image">
+                            <img src="images/news-1.png" alt="مقال صحي">
+                            <div class="news-category">مقال مميز</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">
+                                    <i class="fas fa-calendar"></i> 1  2025
+                                </span>
+                                <span class="news-author">
+                                    <i class="fas fa-user"></i> حازم سعد
+                                </span>
+                            </div>
+                            <h3>أهمية الالتزام بالدواء</h3>
+                            <p>فهم سبب أهمية تناول الأدوية كما هو موصوف لنجاح العلاج والنتائج الصحية الشاملة.</p>
+                            <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    
+                    <div class="news-sidebar">
+                        <article class="news-card" data-aos="fade-left" data-aos-delay="100">
+                            <div class="news-image">
+                                <img src="images/news-2.png" alt="مقال صحي">
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-date">
+                                        <i class="fas fa-calendar"></i>  مارس 2025
+                                    </span>
+                                </div>
+                                <h4>فيتامين د: الفوائد والمصادر</h4>
+                                <a href="#" class="read-more">اقرأ المزيد</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card" data-aos="fade-left" data-aos-delay="200">
+                            <div class="news-image">
+                                <img src="images/news-3.png" alt="مقال صحي">
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-date">
+                                        <i class="fas fa-calendar"></i> 8  2025
+                                    </span>
+                                </div>
+                                <h4>إدارة حساسية المواسم</h4>
+                                <a href="#" class="read-more">اقرأ المزيد</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card" data-aos="fade-left" data-aos-delay="300">
+                            <div class="news-image">
+                                <img src="images/news-4.png" alt="مقال صحي">
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span class="news-date">
+                                        <i class="fas fa-calendar"></i> 5  2025
+                                    </span>
+                                </div>
+                                <h4>نصائح صحة القلب للجميع</h4>
+                                <a href="#" class="read-more">اقرأ المزيد</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section id="offers" class="offers">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">عروض خاصة وترويجات</h2>
+                    <p class="section-subtitle">عروض محدودة الوقت على منتجات الرعاية الصحية</p>
+                </div>
+                
+                <div class="offers-slider" data-aos="fade-up" data-aos-delay="200">
+                    <div class="offer-slide active">
+                        <div class="offer-content">
+                            <div class="offer-badge">عرض محدود</div>
+                            <h3>خصم 20% على جميع الفيتامينات</h3>
+                            <p>عزز مناعتك مع مجموعة الفيتامينات المميزة لدينا. العرض ساري حتى 31 مارس.</p>
+                            <div class="offer-timer">
+                                <div class="timer-item">
+                                    <span class="timer-number" id="days">15</span>
+                                    <span class="timer-label">يوم</span>
+                                </div>
+                                <div class="timer-item">
+                                    <span class="timer-number" id="hours">08</span>
+                                    <span class="timer-label">ساعة</span>
+                                </div>
+                                <div class="timer-item">
+                                    <span class="timer-number" id="minutes">45</span>
+                                    <span class="timer-label">دقيقة</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="btn btn-primary">احصل على العرض</a>
+                        </div>
+                        <div class="offer-image">
+                            <img src="images/offer-1.jpg" alt="عرض الفيتامينات">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="monthly-offers">
+                    <div class="offer-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="offer-icon">
+                            <i class="fas fa-prescription-bottle"></i>
+                        </div>
+                        <h4>استشارة مجانية</h4>
+                        <p>مع أي شراء لوصفة طبية</p>
+                        <span class="offer-validity">ساري طوال الشهر</span>
+                    </div>
+                    
+                    <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="offer-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h4>توصيل مجاني</h4>
+                        <p>على الطلبات أكثر من 50 جنيه</p>
+                        <span class="offer-validity">عرض محدود</span>
+                    </div>
+                    
+                    <div class="offer-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="offer-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4>اشتري 2 واحصل على 1 مجاناً</h4>
+                        <p>على منتجات العناية بالبشرة المختارة</p>
+                        <span class="offer-validity">هذا الأسبوع فقط</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">اتصل بنا</h2>
+                    <p class="section-subtitle">تواصل معنا للحصول على دعم صحي</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>زور صيدليتنا</h4>
+                                <p>المحلة الكبرى، محافظة الغربية<br>جمهورية مصر العربية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>اتصل بنا</h4>
+                                <p>+201287571975<br>متاح 24/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>واتساب</h4>
+                                <p>+201287571975<br>استشارة سريعة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>راسلنا بالبريد الإلكتروني</h4>
+                                <p>info@hazemsaadpharmacy.com<br>سنرد خلال 24 ساعة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <h4>تابعنا</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-link facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container" data-aos="fade-left">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">الاسم الكامل</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">عنوان البريد الإلكتروني</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">الموضوع</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">اختر موضوعاً</option>
+                                    <option value="consultation">استشارة صيدلانية</option>
+                                    <option value="prescription">استفسار عن وصفة طبية</option>
+                                    <option value="product">معلومات عن منتج</option>
+                                    <option value="appointment">حجز موعد</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">الرسالة</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">إرسال الرسالة</span>
+                                <span class="btn-loader" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="map-container" data-aos="fade-up" data-aos-delay="300">
+                    <div id="map">
+                        <!-- Google Maps for El Mahalla El Kubra, Gharbia, Egypt -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27549.567890123456!2d31.1646285!3d30.9706915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7bebb618bcf2b%3A0x3b92b1c4c5c6d7e8!2z2KfZhNmF2K3Zt9ipINin2YTZg9io2LHZiSDYjCDZhdit2KfZgdi42Kkg2KfZhNi62LHYqNmK2Kkg2YXYtdixINmF2LXYsQ%3D%3D!5e0!3m2!1sar!2seg!4v1703856000000!5m2!1sar!2seg"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;border-radius:8px;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="موقع صيدلية حازم سعد في المحلة الكبرى">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-pharmacy"></i>
+                        </div>
+                        <span class="logo-text">صيدلية حازم سعد</span>
+                    </div>
+                    <p class="footer-description">
+                        شريككم الموثوق في الرعاية الصحية، ملتزمون بتقديم خدمات صيدلانية 
+                        عالية الجودة وحلول عافية من أجل مجتمع أكثر صحة.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#news">أخبار صحية</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>خدماتنا</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">استشارة صيدلانية</a></li>
+                        <li><a href="#services">أدوية بوصفة طبية</a></li>
+                        <li><a href="#services">أجهزة طبية</a></li>
+                        <li><a href="#services">مكملات غذائية وفيتامينات</a></li>
+                        <li><a href="#services">استشارة عبر الإنترنت</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>معلومات الاتصال</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            شارع محب   <br>المحلة الكبري  
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            +20 1287571975
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            info@hazemsaadpharmacy.com
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            السبت - الخميس: 8:00 ص - 10:00 م<br>
+                            الجمعة: 9:00 ص - 8:00 م
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 صيدلية حازم سعد. جميع الحقوق محفوظة.</p>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">سياسة الخصوصية</a>
+                    <a href="#terms">شروط الخدمة</a>
+                    <a href="#sitemap">خريطة الموقع</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Photo Zoom Modal -->
+    <div id="photo-modal" class="photo-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-photo-modal">
+                <i class="fas fa-times"></i>
+            </span>
+            <img src="" alt="" id="modal-photo">
+            <div class="modal-info">
+                <h3>الدكتور حازم سعد</h3>
+                <p>صيدلي مرخص ودكتور صيدلة</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="article-modal" class="article-modal">
+        <div class="article-modal-content">
+            <span class="close-modal" id="close-article-modal">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="article-modal-body">
+                <div class="article-header">
+                    <img src="" alt="" id="article-modal-image">
+                    <div class="article-meta">
+                        <h2 id="article-modal-title"></h2>
+                        <div class="article-info">
+                            <span class="article-author">
+                                <i class="fas fa-user"></i> 
+                                <span id="article-modal-author"></span>
+                            </span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i> 
+                                <span id="article-modal-date"></span>
+                            </span>
+                            <span class="article-category">
+                                <i class="fas fa-tag"></i> 
+                                <span id="article-modal-category"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-content">
+                    <div id="article-modal-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

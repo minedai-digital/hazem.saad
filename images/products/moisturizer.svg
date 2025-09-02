@@ -1,0 +1,54 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="moisturizerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.2)"/>
+    </filter>
+    <radialGradient id="jarGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ecf0f1;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#moisturizerGradient)"/>
+  
+  <!-- Moisturizer jar -->
+  <ellipse cx="200" cy="180" rx="70" ry="8" fill="rgba(0,0,0,0.2)"/> <!-- shadow -->
+  <rect x="130" y="80" width="140" height="100" rx="10" fill="url(#jarGradient)" filter="url(#shadow)"/>
+  
+  <!-- Jar lid -->
+  <ellipse cx="200" cy="80" rx="70" ry="15" fill="#34495e"/>
+  <ellipse cx="200" cy="75" rx="60" ry="12" fill="#2c3e50"/>
+  <ellipse cx="200" cy="70" rx="50" ry="8" fill="#95a5a6"/>
+  
+  <!-- Label on jar -->
+  <rect x="140" y="110" width="120" height="50" fill="#2c3e50" opacity="0.9"/>
+  <text x="200" y="125" text-anchor="middle" fill="white" font-size="12" font-weight="bold">MOISTURIZER</text>
+  <text x="200" y="140" text-anchor="middle" fill="white" font-size="10">DEEP HYDRATION</text>
+  <text x="200" y="152" text-anchor="middle" fill="white" font-size="8">All Skin Types</text>
+  
+  <!-- Cream texture effect -->
+  <g fill="white" opacity="0.6">
+    <ellipse cx="180" cy="95" rx="8" ry="3"/>
+    <ellipse cx="200" cy="100" rx="6" ry="2"/>
+    <ellipse cx="220" cy="95" rx="7" ry="3"/>
+  </g>
+  
+  <!-- Droplets for hydration effect -->
+  <g fill="white" opacity="0.7">
+    <circle cx="120" cy="60" r="2"/>
+    <circle cx="130" cy="45" r="1.5"/>
+    <circle cx="280" cy="50" r="2"/>
+    <circle cx="290" cy="65" r="1.5"/>
+    <circle cx="270" cy="40" r="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="220" text-anchor="middle" fill="white" font-size="18" font-weight="bold">كريم مرطب</text>
+  <text x="200" y="240" text-anchor="middle" fill="white" font-size="12">ترطيب عميق لجميع</text>
+  <text x="200" y="255" text-anchor="middle" fill="white" font-size="12">أنواع البشرة</text>
+</svg>

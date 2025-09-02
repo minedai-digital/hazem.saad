@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "فيتامين د3 1000 وحدة",
+    "category": "vitamins",
+    "price": "12.99 ج.م",
+    "description": "فيتامين أساسي لصحة العظام ودعم جهاز المناعة",
+    "image": "images/products/vitamin-d3.svg",
+    "status": "active",
+    "dateAdded": "2024-03-15"
+  },
+  {
+    "id": 2,
+    "name": "زيت السمك أوميجا 3",
+    "category": "supplements",
+    "price": "24.99 ج.م",
+    "description": "أحماض أوميجا 3 عالية الجودة لصحة القلب",
+    "image": "images/products/omega-3.svg",
+    "status": "active",
+    "dateAdded": "2024-03-14"
+  },
+  {
+    "id": 3,
+    "name": "باراسيتامول 500 ملجم",
+    "category": "medicines",
+    "price": "8.99 ج.م",
+    "description": "مسكن فعال للألم وخافض للحرارة",
+    "image": "images/products/paracetamol.svg",
+    "status": "active",
+    "dateAdded": "2024-03-13"
+  },
+  {
+    "id": 4,
+    "name": "سيروم مكافح للشيخوخة",
+    "category": "beauty",
+    "price": "45.99 ج.م",
+    "description": "تركيبة متقدمة لبشرة شابة ومشرقة",
+    "image": "images/products/serum.svg",
+    "status": "active",
+    "dateAdded": "2024-03-12"
+  },
+  {
+    "id": 5,
+    "name": "مجموعة فيتامينات متعددة",
+    "category": "vitamins",
+    "price": "18.99 ج.م",
+    "description": "دعم يومي كامل للفيتامينات والمعادن",
+    "image": "images/products/multivitamin.svg",
+    "status": "active",
+    "dateAdded": "2024-03-11"
+  },
+  {
+    "id": 6,
+    "name": "إيبوبروفين 400 ملجم",
+    "category": "medicines",
+    "price": "6.99 ج.م",
+    "description": "دواء مضاد للالتهاب ومسكن للألم",
+    "image": "images/products/ibuprofen.svg",
+    "status": "active",
+    "dateAdded": "2024-03-10"
+  },
+  {
+    "id": 7,
+    "name": "كريم مرطب",
+    "category": "beauty",
+    "price": "22.99 ج.م",
+    "description": "ترطيب عميق لجميع أنواع البشرة",
+    "image": "images/products/moisturizer.svg",
+    "status": "active",
+    "dateAdded": "2024-03-09"
+  },
+  {
+    "id": 8,
+    "name": "بروبيوتيك",
+    "category": "supplements",
+    "price": "29.99 ج.م",
+    "description": "دعم صحة الجهاز الهضمي وجهاز المناعة",
+    "image": "images/products/probiotics.svg",
+    "status": "active",
+    "dateAdded": "2024-03-08"
+  }
+]

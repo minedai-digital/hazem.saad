@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "أحمد محمد",
+    "email": "ahmed@example.com",
+    "phone": "+20 123 456 7890",
+    "subject": "استشارة صيدلانية",
+    "message": "أحتاج نصيحة حول تفاعلات الأدوية مع بعض المكملات الغذائية...",
+    "status": "unread",
+    "dateReceived": "2024-03-15T10:30:00",
+    "priority": "normal"
+  },
+  {
+    "id": 2,
+    "name": "فاطمة علي",
+    "email": "fatima@example.com",
+    "phone": "+20 123 456 7891",
+    "subject": "استفسار عن منتج",
+    "message": "هل يتوفر لديكم مكملات فيتامين د؟",
+    "status": "read",
+    "dateReceived": "2024-03-14T15:45:00",
+    "priority": "low"
+  },
+  {
+    "id": 3,
+    "name": "محمد حسن",
+    "email": "mohammed@example.com",
+    "phone": "+20 123 456 7892",
+    "subject": "طلب موعد",
+    "message": "أرغب في حجز موعد للاستشارة الصيدلانية",
+    "status": "unread",
+    "dateReceived": "2024-03-14T09:20:00",
+    "priority": "high"
+  }
+]
